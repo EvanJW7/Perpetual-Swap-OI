@@ -57,4 +57,4 @@ i = 0
 while i < len(df):
     df['Open Interest'][i] = "{:,}".format(df['Open Interest'][i])
     i += 1
-print(df)
+
