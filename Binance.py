@@ -1,5 +1,3 @@
-import websocket, json
-from binance.client import Client
 import requests
 import pandas as pd
 from tqdm import tqdm, trange
@@ -30,8 +28,8 @@ oi = []
 with tqdm(total = len(symbols)) as pbar:
     for symbol in symbols:
         try:
-            socket = f'https://fapi.binance.com/futures/data/openInterestHist?symbol={symbol}&period=5m&limit=1'
-            data = requests.get(socket)
+            url = f'https://fapi.binance.com/futures/data/openInterestHist?symbol={symbol}&period=5m&limit=1'
+            data = requests.get(url)
             data = data.json()
             mydict = {}
             for x in data:
@@ -57,4 +55,6 @@ i = 0
 while i < len(df):
     df['Open Interest'][i] = "{:,}".format(df['Open Interest'][i])
     i += 1
+           
+print(df)
 
